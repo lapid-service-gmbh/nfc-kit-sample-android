@@ -84,5 +84,5 @@ dependencies {
 	implementation ("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 
 	// LapID Nfc Kit
-	implementation ("de.lapid.nfckit:nfckit:1.0.0")
+	implementation ("de.lapid.nfckit:nfckit-test:1.0.414")
 }
