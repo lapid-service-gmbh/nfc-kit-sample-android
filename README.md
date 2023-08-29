@@ -16,12 +16,12 @@ allprojects {
         google()
         mavenCentral()
         maven {
-			    url = uri("https://maven.pkg.github.com/lapid-service-gmbh/nfc-kit-android")
-			    credentials {
-				    username = "YOUR_USERNAME"
-				    password = "YOUR_PASSWORD"
-			    }
-		  }
+    		url = uri("https://maven.pkg.github.com/lapid-service-gmbh/nfc-kit-android")
+		credentials {
+		username = "YOUR_USERNAME"
+	    	password = "YOUR_PASSWORD"
+	    	}
+	  }
     }
 }
 ```
