@@ -69,7 +69,7 @@ dependencies {
 
 	// Compose
 	implementation ("com.airbnb.android:lottie-compose:6.1.0")
-	implementation ("androidx.navigation:navigation-compose:2.7.1")
+	implementation ("androidx.navigation:navigation-compose:2.7.2")
 	implementation ("androidx.camera:camera-camera2:1.3.0-rc01")
 	implementation ("androidx.camera:camera-view:1.3.0-rc01")
 	implementation ("androidx.camera:camera-lifecycle:1.3.0-rc01")
@@ -84,5 +84,6 @@ dependencies {
 	implementation ("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 
 	// LapID Nfc Kit
-	implementation ("de.lapid.nfckit:nfckit-test:1.0.414")
+	//noinspection GradleDynamicVersion
+	implementation ("de.lapid.nfckit:nfckit-test:+")
 }
