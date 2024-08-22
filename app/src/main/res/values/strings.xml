@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LapIDNfcKitSample</string>
+    <string name="title">NfcKit Sample App</string>
+    <string name="device_capability_has_camera">Device Capability - Has Camera</string>
+    <string name="device_capability_has_nfc">Device Capability - Has Nfc</string>
+    <string name="start_nfc_kit">Nfc Scan</string>
+</resources>
