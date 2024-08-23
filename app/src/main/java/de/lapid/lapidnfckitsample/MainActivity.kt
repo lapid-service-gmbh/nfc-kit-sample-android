@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.google.gson.GsonBuilder
 import de.lapid.lapidnfckitsample.ui.components.Button
 import de.lapid.lapidnfckitsample.ui.theme.LapIDNfcKitSampleTheme
@@ -54,13 +55,13 @@ class MainActivity : ComponentActivity() {
 					// The check was completed. Use the driverId and, if present, the externalDriverId to update your UI, process the information with a request etc.
 					if (lapIdNfcKitResult.successful == true) {
 						if (lapIdNfcKitResult.externalId != null) {
-							showToast("Check was successful\n" +
-									"Driver id: ${lapIdNfcKitResult.driverId}\n" +
-									"External id: ${lapIdNfcKitResult.externalId}")
-						}
-						else {
-							showToast("Check was successful\n" +
-									"Driver id: ${lapIdNfcKitResult.driverId}")
+							showToast(
+								"Check was successful\n" + "Driver id: ${lapIdNfcKitResult.driverId}\n" + "External id: ${lapIdNfcKitResult.externalId}"
+							)
+						} else {
+							showToast(
+								"Check was successful\n" + "Driver id: ${lapIdNfcKitResult.driverId}"
+							)
 						}
 					} else {
 						showToast("Check was not successful.")
@@ -101,8 +102,13 @@ class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		registerReceiver(receiverLapIdNfcKitResult, IntentFilter("LapIdNfcKitResult"))
-		registerReceiver(receiverLapIdNfcKitError, IntentFilter("LapIdNfcKitError"))
+		val receiverFlags = ContextCompat.RECEIVER_EXPORTED
+		ContextCompat.registerReceiver(
+			this, receiverLapIdNfcKitResult, IntentFilter("LapIdNfcKitResult"), receiverFlags
+		)
+		ContextCompat.registerReceiver(
+			this, receiverLapIdNfcKitError, IntentFilter("LapIdNfcKitError"), receiverFlags
+		)
 
 		setContent {
 			LapIDNfcKitSampleTheme {
@@ -115,8 +121,7 @@ class MainActivity : ComponentActivity() {
 							.background(
 								brush = Brush.verticalGradient(
 									colors = listOf(
-										LightBlue,
-										DarkBlue
+										LightBlue, DarkBlue
 									)
 								)
 							),
@@ -127,7 +132,7 @@ class MainActivity : ComponentActivity() {
 
 						Image(
 							painter = painterResource(id = R.drawable.logo_lapid_white),
-							contentDescription = stringResource(id = de.lapid.nfckit.R.string.lapidNfcKit_titleImageDescription),
+							contentDescription = stringResource(id = de.lapid.nfckit.R.string.lapidNfcKit_allTitle),
 							modifier = Modifier
 								.fillMaxWidth()
 								.padding(0.dp, 0.dp, 0.dp, 32.dp)
@@ -164,8 +169,7 @@ class MainActivity : ComponentActivity() {
 						Button(textResource = R.string.start_nfc_kit, onClick = {
 							startActivity(
 								Intent(
-									applicationContext,
-									LapIDNfcKitMainActivity::class.java
+									applicationContext, LapIDNfcKitMainActivity::class.java
 								)
 							)
 						})
